@@ -82,7 +82,7 @@ The installer will:
 
 After installation, open the following address in a browser:
 
-http://<your-ip>:8090
+http://localhost:8090 <- Change localhost to server IP if needed
 
 
 ------------------------------------------------------------
