@@ -1,8 +1,5 @@
 ![DaVinci Project Server Banner](./dps-banner.png)
 
-=========================
-DaVinci Project Server — Portable Deployment Suite
-==================================================
 
 A fully portable, self-contained DaVinci Resolve Project Server environment...
 
