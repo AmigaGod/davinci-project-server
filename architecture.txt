@@ -1,0 +1,86 @@
+DaVinci Project Server — System Architecture
+============================================
+
+This document describes the internal architecture of the DaVinci Project Server.
+It explains how the components interact and how the system is structured.
+
+
+------------------------------------------------------------
+OVERVIEW
+------------------------------------------------------------
+
+The system consists of two main services:
+
+1. PostgreSQL Database (davinci-postgre)
+   Stores all DaVinci Resolve project libraries.
+
+2. GUI + Backend Service (davinci-project-server-gui)
+   Provides a web interface for managing backups, libraries, and settings.
+
+
+------------------------------------------------------------
+COMPONENTS
+------------------------------------------------------------
+
+PostgreSQL Container:
+    - Based on PostgreSQL 15
+    - Stores Resolve project libraries
+    - Exposes port 5432
+    - Data is embedded inside the portable Docker image
+
+GUI Container:
+    - Node.js backend
+    - HTML/CSS/JS frontend
+    - Exposes port 8090
+    - Communicates with PostgreSQL via internal Docker networking
+
+
+------------------------------------------------------------
+DATA FLOW
+------------------------------------------------------------
+
+1. User accesses the GUI through a browser.
+2. GUI sends API requests to the backend (Node.js).
+3. Backend communicates with PostgreSQL to:
+       - List project libraries
+       - Create backups
+       - Restore backups
+       - Query metadata
+4. Results are returned to the GUI and displayed to the user.
+
+
+------------------------------------------------------------
+DEPLOYMENT MODEL
+------------------------------------------------------------
+
+The system is packaged as:
+    - Two Docker images (.tar files)
+    - One project source archive (zip)
+    - One installer script
+
+The installer:
+    - Installs Docker if missing
+    - Loads both images
+    - Starts both containers
+    - Prints the access URL
+
+
+------------------------------------------------------------
+BACKUP AND RESTORE MODEL
+------------------------------------------------------------
+
+Backups include:
+    - PostgreSQL container snapshot
+    - GUI container snapshot
+    - Project folder archive
+
+Restores:
+    - Stop containers
+    - Load backup images
+    - Restore project folder
+    - Restart containers
+
+
+------------------------------------------------------------
+END OF FILE
+------------------------------------------------------------

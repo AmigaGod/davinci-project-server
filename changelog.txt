@@ -1,0 +1,31 @@
+DaVinci Project Server — Change Log
+===================================
+
+This file records notable changes, updates, and improvements to the project.
+
+
+------------------------------------------------------------
+Version 1.0.0 — Initial Release
+------------------------------------------------------------
+
+- Added full portable deployment system
+- Added GUI + backend container
+- Added PostgreSQL container with Resolve libraries
+- Added install.sh automated installer
+- Added update.sh for GUI updates
+- Added uninstall.sh for clean removal
+- Added backup.sh for full system backups
+- Added restore.sh for restoring from backups
+- Added docker-compose.yml for optional compose support
+- Added complete documentation:
+      README.md
+      setup.txt
+      troubleshooting.txt
+      architecture.txt
+      COPYRIGHT
+      LICENSE
+
+
+------------------------------------------------------------
+END OF FILE
+------------------------------------------------------------

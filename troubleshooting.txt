@@ -1,0 +1,101 @@
+DaVinci Project Server — Troubleshooting Guide
+==============================================
+
+This document lists common issues and solutions for the DaVinci Project Server.
+Use this guide when the system does not start, containers fail, or the GUI is
+not accessible.
+
+
+------------------------------------------------------------
+GUI NOT LOADING
+------------------------------------------------------------
+
+Symptom:
+    Browser cannot connect to http://<ip>:8090
+
+Possible causes:
+    - GUI container is not running
+    - Port 8090 is already in use
+    - PostgreSQL container is not running
+
+Check container status:
+    docker ps
+
+Check GUI logs:
+    docker logs davinci-project-server-gui
+
+If port is in use:
+    Modify port mapping in install.sh or docker-compose.yml
+
+
+------------------------------------------------------------
+POSTGRESQL NOT STARTING
+------------------------------------------------------------
+
+Symptom:
+    GUI loads but cannot access project libraries
+
+Check logs:
+    docker logs davinci-postgre
+
+Possible causes:
+    - Port 5432 already in use
+    - Corrupted container image
+    - Missing image file during installation
+
+If port is in use:
+    Change port mapping in install.sh or docker-compose.yml
+
+
+------------------------------------------------------------
+INSTALLER FAILS TO LOAD IMAGES
+------------------------------------------------------------
+
+Symptom:
+    install.sh reports missing .tar files
+
+Cause:
+    davinci-complete-deployable.zip was not extracted correctly
+
+Solution:
+    Ensure install.sh and davinci-complete-deployable.zip are in the same folder
+    Run:
+        unzip -o davinci-complete-deployable.zip
+
+
+------------------------------------------------------------
+UPDATE FAILS
+------------------------------------------------------------
+
+Symptom:
+    update.sh cannot restart GUI container
+
+Cause:
+    Old container still running
+
+Solution:
+    docker rm -f davinci-project-server-gui
+    ./update.sh
+
+
+------------------------------------------------------------
+BACKUP OR RESTORE FAILS
+------------------------------------------------------------
+
+Symptom:
+    backup.sh or restore.sh reports missing files
+
+Cause:
+    Backup folder name incorrect or incomplete
+
+Solution:
+    Verify folder contains:
+        postgre-backup.tar
+        gui-backup.tar
+        project.zip
+
+
+------------------------------------------------------------
+END OF FILE
+------------------------------------------------------------
+

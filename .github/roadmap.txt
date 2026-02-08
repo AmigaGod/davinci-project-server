@@ -1,0 +1,29 @@
+DaVinci Project Server — Roadmap
+================================
+
+Version 1.x Goals
+-----------------
+
+- Improve GUI responsiveness
+- Add project library export tools
+- Add optional authentication layer
+- Expand backup/restore options
+- Improve Docker image size and build speed
+
+Version 2.x Goals
+-----------------
+
+- Web-based configuration editor
+- Multi-user access control
+- Remote PostgreSQL support
+- Plugin system for custom tools
+
+Long-Term Vision
+----------------
+
+- Full standalone Resolve project management suite
+- Cross-platform deployment (Linux, macOS, Windows)
+- Automated cloud backup integration
+
+End of File
+-----------

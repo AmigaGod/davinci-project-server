@@ -1,0 +1,16 @@
+DaVinci Project Server Version File
+===================================
+
+Current Version:
+    1.0.0
+
+Versioning Scheme:
+    This project uses semantic versioning:
+        MAJOR.MINOR.PATCH
+
+    MAJOR: Incompatible changes
+    MINOR: New features, backward compatible
+    PATCH: Bug fixes only
+
+End of File
+-----------

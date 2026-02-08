@@ -1,0 +1,134 @@
+DaVinci Project Server — Setup Instructions
+==========================================
+
+This file describes how to set up the DaVinci Project Server on a new machine
+using the portable deployment package.
+
+The system consists of two Docker containers:
+- A PostgreSQL 15 database containing all DaVinci Resolve project libraries
+- A GUI + backend service providing the management interface
+
+The setup process is fully automated through install.sh.
+
+
+------------------------------------------------------------
+REQUIREMENTS
+------------------------------------------------------------
+
+Operating System:
+    Linux (Ubuntu recommended)
+
+Software:
+    Docker Engine (installed automatically if missing)
+
+Hardware:
+    Minimum 2 GB RAM
+    Minimum 5 GB free disk space
+
+Files needed:
+    install.sh
+    davinci-complete-deployable.zip
+
+
+------------------------------------------------------------
+INSTALLATION STEPS
+------------------------------------------------------------
+
+1. Place install.sh and davinci-complete-deployable.zip in the same directory.
+
+2. Make the installer executable:
+       chmod +x install.sh
+
+3. Run the installer:
+       ./install.sh
+
+The installer will:
+    - Unpack the deployment ZIP
+    - Install Docker if not present
+    - Load the GUI and PostgreSQL Docker images
+    - Start both containers
+    - Display the access URL for the web interface
+
+After installation, open the following address in a browser:
+    http://<your-ip>:8090
+
+
+------------------------------------------------------------
+VERIFYING INSTALLATION
+------------------------------------------------------------
+
+Check running containers:
+    docker ps
+
+You should see:
+    davinci-postgre
+    davinci-project-server-gui
+
+Check logs if needed:
+    docker logs davinci-postgre
+    docker logs davinci-project-server-gui
+
+
+------------------------------------------------------------
+UPDATING THE SERVER
+------------------------------------------------------------
+
+To update the GUI or backend without losing data:
+
+1. Replace davinci-complete-deployable.zip with the new version.
+2. Run:
+       chmod +x update.sh
+       ./update.sh
+
+The PostgreSQL data will remain intact.
+
+
+------------------------------------------------------------
+UNINSTALLING
+------------------------------------------------------------
+
+To remove all containers and images:
+
+    chmod +x uninstall.sh
+    ./uninstall.sh
+
+This removes:
+    - GUI container
+    - PostgreSQL container
+    - Both Docker images
+
+The project folder remains unless removed manually.
+
+
+------------------------------------------------------------
+BACKUP AND RESTORE
+------------------------------------------------------------
+
+To create a full backup:
+    chmod +x backup.sh
+    ./backup.sh
+
+A folder named backup_YYYY-MM-DD_HH-MM-SS will be created containing:
+    postgre-backup.tar
+    gui-backup.tar
+    project.zip
+
+To restore from a backup:
+    chmod +x restore.sh
+    ./restore.sh backup_YYYY-MM-DD_HH-MM-SS
+
+
+------------------------------------------------------------
+OPTIONAL: DOCKER COMPOSE
+------------------------------------------------------------
+
+You may use docker-compose.yml to start the system:
+
+    docker compose up -d
+
+This will start both containers automatically.
+
+
+------------------------------------------------------------
+END OF FILE
+------------------------------------------------------------

@@ -1,0 +1,13 @@
+Feature Request
+===============
+
+Description:
+    Describe the feature you would like to see.
+
+Reason:
+    Why is this feature useful or necessary.
+
+Proposed Implementation:
+    Optional suggestion for how it could work.
+
+Additional Notes:

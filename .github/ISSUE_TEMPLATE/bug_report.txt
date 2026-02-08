@@ -1,0 +1,24 @@
+Bug Report
+==========
+
+Summary:
+    Describe the issue clearly.
+
+Steps to Reproduce:
+    1.
+    2.
+    3.
+
+Expected Behavior:
+    What should have happened.
+
+Actual Behavior:
+    What actually happened.
+
+Environment:
+    OS:
+    Docker version:
+    Project Server version:
+
+Logs or Additional Information:
+    Include any relevant logs or notes.
