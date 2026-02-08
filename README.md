@@ -1,7 +1,7 @@
 ![DaVinci Project Server Banner](./dps-banner.png)
 
 
-A fully portable, self-contained DaVinci Resolve Project Server environment...
+A fully self-contained DaVinci Resolve Project Server environment...
 
 --------------------------------
 MISSION STATEMENT
