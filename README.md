@@ -1,213 +1,80 @@
 
-============================================================
-              DaVinci Project Server (Portable Edition)
-============================================================
-...
-
-DaVinci Project Server — Portable Deployment Suite
-==================================================
-
-This package contains a fully portable DaVinci Resolve Project Server environment. 
-It includes:
-
-- A complete GUI and backend (Node.js)
-- A PostgreSQL 15 database containing all Resolve project libraries
-- Pre-built Docker images for both services
-- Automated install, update, backup, restore, and uninstall scripts
-- Optional Docker Compose support
-
-This system allows deployment on any machine in minutes.
+/==============================================\
+|      DaVinci Project Server (Portable)       |
+\==============================================/
 
 
-------------------------------------------------------------
-CONTENTS OF davinci-complete-deployable.zip
-------------------------------------------------------------
+A fully portable, self-contained DaVinci Resolve Project Server environment with PostgreSQL, automated deployment scripts, backup/ restore tooling, and optional Docker Compose support.
+This project is designed for creators, studios, and technicians who want a clean, reproducible, and easily deployable Resolve project server without manual configuration or system-level dependencies.
 
-The ZIP file contains the following files:
+Features
+• 	Portable deployment — no system installation required
+• 	Automated setup via install.sh
+• 	Full backup and restore with backup.sh and restore.sh
+• 	Update and uninstall scripts for clean lifecycle management
+• 	Docker Compose support for GUI + PostgreSQL
+• 	Prebuilt deployable ZIP for quick installation
+• 	Documentation included (docs/)
+• 	GPLv3 licensed open-source project
 
-davinci-gui-image.tar          GUI + backend Docker image
-davinci-postgre-image.tar      PostgreSQL + Resolve libraries
-davinci-project-folder.zip     Full project source code
-install.sh                     One-command installer
-update.sh                      Update script
-uninstall.sh                   Clean removal script
-backup.sh                      Backup script
-restore.sh                     Restore script
-docker-compose.yml             Optional Docker Compose configuration
-README.md                      This file
-
-
-------------------------------------------------------------
-INSTALLATION
-------------------------------------------------------------
-
-Place install.sh and davinci-complete-deployable.zip in the same folder.
-
-Run the following commands:
-
-chmod +x install.sh
+Quick Start
+1. 	Clone the repository
+git clone https://github.com/AmigaGod/davinci-project-server.git
+cd davinci-project-server
+2. 	Run the installer
 ./install.sh
+3. 	Start the server
+docker-compose up -d
+The Resolve Project Server GUI and PostgreSQL instance will start automatically.
 
-The installer will:
+Included Scripts
+install.sh — Install and initialize the server environment
+update.sh — Update to the latest version
+uninstall.sh — Clean removal of all components
+backup.sh — Create a full backup of the project database
+restore.sh — Restore from a backup
+release.sh — Build a release package
+bootstrap_repo.sh — Initialize repo structure (dev use)
 
-1. Unpack the ZIP
-2. Install Docker if missing
-3. Load both Docker images
-4. Start the PostgreSQL container
-5. Start the GUI container
-6. Print the access URL
+Project Structure
+.
+├── docs/                     (GitHub Pages documentation)
+├── .github/                  (Issue templates, CI, policies)
+├── docker-compose.yml        (GUI + PostgreSQL stack)
+├── *.sh                      (Deployment and maintenance scripts)
+├── LICENSE                   (GPLv3 license)
+├── VERSION                   (Current version)
+└── davinci-complete-deployable.zip
 
-After installation, open the following address in a browser:
+Documentation
+Full documentation is available via GitHub Pages:
+ (amigagod.github.io in Bing)
+Or locally in the docs/ folder.
 
-http://<your-ip>:8090
+🛠 Requirements
+• 	Docker and Docker Compose
+• 	Linux or macOS environment
+• 	DaVinci Resolve Studio (for client access)
 
+Security
+Security guidelines and reporting instructions are available in:
+.github/SECURITY.md
 
-------------------------------------------------------------
-UPDATING THE SERVER
-------------------------------------------------------------
+Contributing
+Contributions are welcome.
+Please read:
+.github/CONTRIBUTING
+.github/CODE_OF_CONDUCT.md
+before submitting pull requests.
 
-To update the GUI or backend without losing data:
+License
+This project is licensed under the GPLv3.
+See LICENSE for details.
 
-1. Replace davinci-complete-deployable.zip with the new version
-2. Run:
+Roadmap
+See .github/roadmap.txt for planned features and future improvements.
 
-chmod +x update.sh
-./update.sh
-
-This updates only the GUI container and keeps PostgreSQL data intact.
-
-
-------------------------------------------------------------
-UNINSTALLING
-------------------------------------------------------------
-
-To remove everything:
-
-chmod +x uninstall.sh
-./uninstall.sh
-
-This stops and removes:
-
-- The GUI container
-- The PostgreSQL container
-- Both Docker images
-
-Your project folder remains unless removed manually.
-
-
-------------------------------------------------------------
-BACKUPS
-------------------------------------------------------------
-
-To create a full backup of:
-
-- PostgreSQL databases
-- GUI container
-- Project folder
-
-Run:
-
-chmod +x backup.sh
-./backup.sh
-
-A timestamped folder will be created:
-
-backup_YYYY-MM-DD_HH-MM-SS/
-
-This folder contains:
-
-postgre-backup.tar
-gui-backup.tar
-project.zip
-
-
-------------------------------------------------------------
-RESTORING FROM BACKUP
-------------------------------------------------------------
-
-To restore from a backup folder:
-
-chmod +x restore.sh
-./restore.sh backup_YYYY-MM-DD_HH-MM-SS
-
-This will:
-
-1. Stop running containers
-2. Load the backup images
-3. Restore the project folder
-4. Start both containers
-
-
-------------------------------------------------------------
-OPTIONAL: DOCKER COMPOSE
-------------------------------------------------------------
-
-You can run the entire system using:
-
-docker compose up -d
-
-The included docker-compose.yml defines:
-
-- PostgreSQL container
-- GUI container
-- Automatic linking between services
-
-
-------------------------------------------------------------
-PROJECT STRUCTURE
-------------------------------------------------------------
-
-The project layout is as follows:
-
-davinci-project-server/
-    gui/
-        app/
-            public/                HTML, CSS, JavaScript files
-            server.js              Backend API server
-            db.js                  PostgreSQL database functions
-            routes/                API route definitions
-            Dockerfile             Container build file
-            (other application files)
-
-    postgres/
-        (inside container)         DaVinci Resolve project libraries stored in PostgreSQL
-
-    scripts/
-        install.sh                 Automated installer
-        update.sh                  Update script
-        uninstall.sh               Removal script
-        backup.sh                  Backup script
-        restore.sh                 Restore script
-        docker-compose.yml         Optional Docker Compose configuration
-
-
-------------------------------------------------------------
-REQUIREMENTS
-------------------------------------------------------------
-
-- Linux (Ubuntu recommended)
-- Docker Engine
-- Minimum 2 GB RAM
-- Minimum 5 GB free disk space
-
-The installer will automatically install Docker if it is not already present.
-
-
-------------------------------------------------------------
-TROUBLESHOOTING
-------------------------------------------------------------
-
-If the GUI is not loading:
-docker logs davinci-project-server-gui
-
-If PostgreSQL is not starting:
-docker logs davinci-postgre
-
-If a port is already in use:
-Modify the ports in install.sh or docker-compose.yml
-
-
-------------------------------------------------------------
-END OF FILE
-------------------------------------------------------------
-
+Maintainers
+This project is maintained by:
+Harald Hellesø (AmigaGod)
+============================================================
