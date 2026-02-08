@@ -1,4 +1,4 @@
-![DaVinci Project Server Banner](./DPSBanner.png)
+![DaVinci Project Server Banner](./dps-banner.png)
 
 ==================================================
 DaVinci Project Server — Portable Deployment Suite
