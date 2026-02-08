@@ -208,7 +208,7 @@ davinci-project-server/
 REQUIREMENTS
 ------------------------------------------------------------
 
-- Linux (Ubuntu recommended)
+- Linux (Debian recommended)
 - Docker Engine
 - Minimum 2 GB RAM
 - Minimum 5 GB free disk space
