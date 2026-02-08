@@ -1,6 +1,35 @@
 DaVinci Project Server — Portable Deployment Suite
 ==================================================
 
+A fully portable, self-contained DaVinci Resolve Project Server environment...
+
+--------------------------------
+MISSION STATEMENT
+--------------------------------
+
+The goal of this project is to make the DaVinci Resolve Project Server accessible,
+portable, and effortless for everyone who relies on it. Traditional installations
+are tied to system-level dependencies, manual configuration steps, and environments
+that are difficult to reproduce or move. This creates friction for creators, studios,
+and technicians who need reliability, consistency, and the freedom to work across
+different machines and setups.
+
+This project exists to remove that friction.
+
+By providing a fully portable, self-contained server environment with automated
+installation, updates, backups, and restores, the project ensures that anyone can
+deploy a Resolve Project Server quickly and confidently. The focus is on simplicity,
+reproducibility, and long-term maintainability, without sacrificing capability or
+control.
+
+The mission is to empower users with a Resolve Project Server that is predictable,
+safe, and ready to use anywhere — a tool that supports creative work instead of
+getting in the way of it.
+
+--------------------------------
+FEATURES
+--------------------------------
+
 This package contains a fully portable DaVinci Resolve Project Server environment. 
 It includes:
 
